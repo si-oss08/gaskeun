@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Gaskeun | Transportasi & Food Delivery Aceh - Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+
+<!-- Background Particles -->
+<div class="particles" id="particles"></div>
+<div class="animated-bg" id="animatedBg"></div>
+
+<nav class="navbar">
+    <div class="logo">
+        <h1>⚡ Gaskeun</h1>
+        <p>✨ Melayani Aceh</p>
+    </div>
+    <div class="nav-links">
+        <a onclick="showTab('transport')">🚗 Transportasi</a>
+        <a onclick="showTab('food')">🍔 Food Delivery</a>
+        <a onclick="showTab('riwayat')">📜 Riwayat</a>
+        <div class="badge-lokasi"><i class="fas fa-map-marker-alt"></i> Banda Aceh & Sekitarnya</div>
+        <div class="chat-icon" onclick="toggleChat()"><i class="fas fa-headset"></i> CS 24 Jam</div>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>Mau Kemana atau Mau Makan? <br> Gaskeun Aja! 🚀</h1>
+    <p>Transportasi & Food Delivery se-Aceh | Cepat, Aman, Lezat | CS 24 Jam</p>
+</div>
+
+<div class="tab-menu">
+    <button class="tab-btn active" onclick="showTab('transport')">🚗 Transportasi</button>
+    <button class="tab-btn" onclick="showTab('food')">🍔 Food Delivery</button>
+    <button class="tab-btn" onclick="showTab('riwayat')">📜 Riwayat Pesanan</button>
+</div>
+
+<!-- TAB TRANSPORTASI -->
+<div id="transportTab" class="tab-content active-tab">
+    <div class="card-modern" style="max-width: 900px; margin: auto;">
+        <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-taxi"></i> Pesan Kendaraan</h2>
+        <div class="form-group">
+            <label>📍 Lokasi Penjemputan</label>
+            <select id="pickupLocation">
+                <option>Banda Aceh (Pusat Kota)</option>
+                <option>Aceh Besar (Jantho)</option>
+                <option>Sigli (Pidie)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>🏁 Tujuan</label>
+            <input type="text" id="destination" placeholder="Masukkan tujuan" value="Masjid Raya Baiturrahman">
+        </div>
+        <div class="form-group">
+            <label>🛵 Pilih Kendaraan</label>
+            <div class="vehicle-options">
+                <div class="vehicle-card active" data-vehicle="motor" id="motorCard"><i class="fas fa-motorcycle"></i><br><strong>Motor</strong><br>Rp2.500/km</div>
+                <div class="vehicle-card" data-vehicle="mobil" id="mobilCard"><i class="fas fa-car"></i><br><strong>Mobil</strong><br>Rp6.000/km</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>📏 Jarak (km)</label>
+            <input type="number" id="distance" value="5" step="0.5">
+        </div>
+        <div class="form-group">
+            <label>👨‍✈️ Pilih Driver (Opsional)</label>
+            <div class="driver-list" id="driverList">
+                <div class="driver-card" data-driver="Ahmad (⭐4.9)"><i class="fas fa-user-circle"></i> Ahmad - ⭐4.9 (Motor)</div>
+                <div class="driver-card" data-driver="Budi (⭐4.8)"><i class="fas fa-user-circle"></i> Budi - ⭐4.8 (Mobil)</div>
+                <div class="driver-card" data-driver="Cut Putri (⭐5.0)"><i class="fas fa-user-circle"></i> Cut Putri - ⭐5.0 (Motor)</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>💳 Metode Pembayaran</label>
+            <div class="payment-options">
+                <div class="payment-card active" data-payment="Tunai">💵 Tunai</div>
+                <div class="payment-card" data-payment="QRIS">📱 QRIS</div>
+                <div class="payment-card" data-payment="Transfer Bank">🏦 Transfer Bank</div>
+            </div>
+        </div>
+        <div class="estimasi" id="estimasiHarga">💰 Estimasi: Rp0</div>
+        <button class="btn-order" id="orderTransportBtn">✅ Gaskeun Pesanan</button>
+        <div id="statusTransport" class="card-modern" style="margin-top: 1rem; text-align: center; background: rgba(255,255,255,0.7);">✨ Siap pesan transportasi</div>
+    </div>
+</div>
+
+<!-- TAB FOOD DELIVERY -->
+<div id="foodTab" class="tab-content">
+    <div class="card-modern" style="max-width: 1200px; margin: auto;">
+        <h2 style="margin-bottom: 1rem;"><i class="fas fa-utensils"></i> Pesan Makanan Aceh</h2>
+        <div class="form-group">
+            <label>📍 Alamat Pengiriman</label>
+            <input type="text" id="foodAddress" placeholder="Masukkan alamat lengkap" value="Banda Aceh, Lampriet">
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+        <div class="cart" id="cart">
+            <h3>🛒 Keranjang Belanja</h3>
+            <div id="cartItems"></div>
+            <div class="total-cart" id="cartTotal">Total: Rp0</div>
+            <button class="btn-order" id="orderFoodBtn" style="margin-top: 1rem;">🍽️ Pesan Makanan Sekarang</button>
+        </div>
+        <div id="statusFood" class="card-modern" style="margin-top: 1rem; text-align: center;"></div>
+    </div>
+</div>
+
+<!-- TAB RIWAYAT -->
+<div id="riwayatTab" class="tab-content">
+    <div class="card-modern" style="max-width: 800px; margin: auto;">
+        <h2><i class="fas fa-history"></i> Riwayat Pemesanan</h2>
+        <div id="riwayatList">Belum ada pesanan</div>
+        <button id="hapusSemuaRiwayatBtn" class="btn-order" style="background: #dc3545; margin-top: 1rem;">🗑️ Hapus Semua Riwayat</button>
+    </div>
+</div>
+
+<!-- MODAL PEMBAYARAN -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <div id="modalBody"></div>
+        <button class="close-modal" onclick="closePaymentModal()">Tutup</button>
+    </div>
+</div>
+
+<!-- CHAT CONTAINER -->
+<div id="chatContainer" class="chat-container">
+    <div class="chat-header" onclick="toggleChat()">
+        <h3><span class="online-status"></span> <i class="fas fa-headset"></i> Customer Service Gaskeun</h3>
+        <button class="close-chat" onclick="event.stopPropagation(); toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message admin">
+            👋 Halo! Selamat datang di Gaskeun!<br>
+            Ada yang bisa kami bantu? Silakan tanyakan kendala atau pesanan Anda.
+            <small>Admin - sekarang</small>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Tulis pesan..." onkeypress="if(event.key==='Enter') sendMessage()">
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<footer>
+    <p>🚀 Gaskeun - Transportasi & Food Delivery untuk Aceh | Banda Aceh, Aceh Besar, Sigli</p>
+    <p style="margin-top: 0.5rem;">©️ 2025 Gaskeun | #GaskeunAja | Cepat, Aman, Lezat | CS 24 Jam</p>
+</footer>
+</body>
+</html>

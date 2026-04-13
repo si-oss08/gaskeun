@@ -1,0 +1,814 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #0a2f0a, #1a4a1a, #2e7d32, #43a047, #66bb6a);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #1a2e1f;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animated Cars Background */
+.animated-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.moving-car {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: driveHorizontal linear infinite;
+    opacity: 0.1;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+}
+
+@keyframes driveHorizontal {
+    0% {
+        transform: translateX(-150px);
+    }
+    100% {
+        transform: translateX(calc(100vw + 150px));
+    }
+}
+
+main, nav, footer, .hero, .card-modern, .tab-menu, .chat-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Modern Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #2e7d32, #66bb6a, #4caf50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo p {
+    font-size: 0.7rem;
+    color: #4caf50;
+    margin-top: -5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #1a3e1f;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #2e7d32, #66bb6a);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #2e7d32;
+    transform: translateY(-2px);
+}
+
+.badge-lokasi {
+    background: rgba(46, 125, 50, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    color: #2e7d32;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.chat-icon {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.chat-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(46,125,50,0.3);
+}
+
+/* Modern Hero */
+.hero {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    margin: 1.5rem 2rem;
+    padding: 2.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s;
+}
+
+.hero:hover {
+    transform: translateY(-5px);
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1b5e20, #4caf50, #66bb6a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+    color: #2d4a2d;
+}
+
+/* Tab Menu Modern */
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 1rem 0;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    color: #1a3e1f;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    box-shadow: 0 10px 25px -5px rgba(46, 125, 50, 0.4);
+    transform: scale(1.05);
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active-tab {
+    display: block;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Glassmorphism Card Modern */
+.card-modern {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border-radius: 48px;
+    padding: 1.8rem;
+    margin: 1rem;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+}
+
+.card-modern:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #1b5e20;
+    font-size: 0.9rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 60px;
+    font-family: inherit;
+    background: white;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    transform: scale(1.01);
+}
+
+/* Modern Vehicle & Payment Cards */
+.vehicle-options, .payment-options, .bank-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vehicle-card, .payment-card, .bank-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 32px;
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    min-width: 100px;
+}
+
+.bank-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.bank-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.vehicle-card:hover, .payment-card:hover, .bank-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+}
+
+.vehicle-card.active, .payment-card.active, .bank-card.active {
+    border-color: #2e7d32;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(46, 125, 50, 0.3);
+}
+
+.vehicle-card i, .payment-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Estimasi Harga Premium */
+.estimasi {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    border-radius: 40px;
+    padding: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    color: white;
+    box-shadow: 0 10px 25px -5px rgba(46, 125, 50, 0.4);
+}
+
+/* Modern Button */
+.btn-order {
+    width: 100%;
+    background: linear-gradient(135deg, #2e7d32, #4caf50, #66bb6a);
+    padding: 16px;
+    border: none;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-size: 200% auto;
+}
+
+.btn-order:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -10px rgba(46, 125, 50, 0.5);
+    background-position: right center;
+}
+
+/* Menu Makanan Modern */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.menu-item {
+    background: white;
+    border-radius: 32px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+}
+
+.menu-emoji {
+    font-size: 3.5rem;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover .menu-emoji {
+    transform: scale(1.1);
+}
+
+.menu-price {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+}
+
+.btn-add {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.btn-add:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+}
+
+/* Cart Modern */
+.cart {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 32px;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.total-cart {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    text-align: right;
+    color: #2e7d32;
+}
+
+/* Driver List */
+.driver-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.driver-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.driver-card.selected {
+    border-color: #2e7d32;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+/* Riwayat Modern */
+.riwayat-item {
+    background: white;
+    border-radius: 28px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.riwayat-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.riwayat-info {
+    flex: 1;
+}
+
+.btn-hapus-item {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-hapus-item:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+/* Chat Container Modern */
+.chat-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 380px;
+    max-width: calc(100vw - 50px);
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeInUp 0.3s ease;
+}
+
+.chat-container.active {
+    display: flex;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-header h3 {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-header .online-status {
+    width: 10px;
+    height: 10px;
+    background: #4caf50;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.close-chat {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.close-chat:hover {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.1);
+}
+
+.chat-messages {
+    height: 350px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.message.user {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.admin {
+    background: white;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.message small {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    display: block;
+    margin-top: 5px;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid #eee;
+    gap: 10px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 0.9rem;
+}
+
+.chat-input-area button {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.chat-input-area button:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Modern */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 48px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    animation: fadeInUp 0.4s ease;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.qris-code {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.qris-code svg {
+    width: 220px;
+    height: 220px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.bank-logo {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.bank-info {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 24px;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+.copy-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0.5rem;
+}
+
+.copy-btn:hover {
+    transform: scale(1.02);
+    background: #1b5e20;
+}
+
+.close-modal {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 60px;
+    z-index: 2001;
+    animation: slideInLeft 0.4s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Footer Modern */
+footer {
+    background: rgba(12, 43, 15, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; gap: 1rem; text-align: center; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero { margin: 1rem; padding: 1.5rem; }
+    .tab-btn { padding: 8px 20px; font-size: 0.85rem; }
+    .vehicle-options, .payment-options, .bank-list { flex-direction: column; }
+    .riwayat-item { flex-direction: column; text-align: center; gap: 10px; }
+    .driver-list { flex-direction: column; }
+    .chat-container { width: calc(100vw - 40px); right: 20px; bottom: 20px; }
+}
